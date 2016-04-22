@@ -11,7 +11,7 @@ namespace MyGame
             SwinGame.OpenGraphicsWindow("GameMain", 800, 600);
             SwinGame.ShowSwinGameSplashScreen();
             
-			//Shape myShape = new Shape ();
+			Shape myShape = new Shape ();
 
 
             //Run the game loop

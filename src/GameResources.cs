@@ -6,7 +6,6 @@ using System.Collections.Generic;
 //using System.Data;
 using System.Diagnostics;
 
-
 namespace MyGame
 {
 
@@ -72,7 +71,7 @@ public static class GameResources
 
 	public static Font GameFont(string font)
 	{
-		return _Fonts(font);
+		return _Fonts[font];
 	}
 
 	/// <summary>
@@ -271,7 +270,7 @@ public static class GameResources
 	private static void FreeFonts()
 	{
 		Font obj = default(Font);
-		foreach ( obj in _Fonts.Values) {
+		foreach (Font obj in _Fonts.Values) {
 			SwinGame.FreeFont(obj);
 		}
 	}
