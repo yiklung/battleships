@@ -1,13 +1,12 @@
-using SwinGameSDK;
+
 using Microsoft.VisualBasic;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 //using System.Data;
 using System.Diagnostics;
+using SwinGameSDK;
 
-namespace MyGame
-{
 static class GameLogic
 {
 	public static void Main()
@@ -16,20 +15,26 @@ static class GameLogic
 		SwinGame.OpenGraphicsWindow("Battle Ships", 800, 600);
 
 		//Load Resources
-		LoadResources();
+//		LoadResources();
+		GameResources.LoadResources();
 
-		SwinGame.PlayMusic(GameMusic("Background"));
+//		SwinGame.PlayMusic(GameMusic("Background"));
+		SwinGame.PlayMusic(GameResources.GameMusic("Background"));
 
 		//Game Loop
 		do {
-			HandleUserInput();
-			DrawScreen();
-		} while (!(SwinGame.WindowCloseRequested() == true | CurrentState == GameState.Quitting));
+//			HandleUserInput();
+			GameController.HandleUserInput();
+//			DrawScreen();
+			GameController.DrawScreen();
+//		} while (!(SwinGame.WindowCloseRequested() == true | CurrentState == GameState.Quitting));
+		} while (!(SwinGame.WindowCloseRequested() == true | GameController.CurrentState == GameState.Quitting));
 
 		SwinGame.StopMusic();
 
 		//Free Resources and Close Audio, to end the program.
-		FreeResources();
+//		FreeResources();
+		GameResources.FreeResources();
 	}
 }
 
@@ -39,4 +44,3 @@ static class GameLogic
 //Twitter: @telerik
 //Facebook: facebook.com/telerik
 //=======================================================
-}
