@@ -109,7 +109,8 @@ static class DeploymentController
 		int row = 0;
 		int col = 0;
 //		row = Convert.ToInt32(Math.Floor((mouse.Y) / (CELL_HEIGHT + CELL_GAP)));
-		row = Convert.ToInt32(Math.Floor((mouse.Y) / (UtilityFunctions.CELL_HEIGHT + UtilityFunctions.CELL_GAP)));
+										// Fixed Ship location Error
+		row = Convert.ToInt32(Math.Floor((mouse.Y - 120) / (UtilityFunctions.CELL_HEIGHT + UtilityFunctions.CELL_GAP)));
 
 //		col = Convert.ToInt32(Math.Floor((mouse.X - FIELD_LEFT) / (CELL_WIDTH + CELL_GAP)));
 		col = Convert.ToInt32(Math.Floor((mouse.X - UtilityFunctions.FIELD_LEFT) / (UtilityFunctions.CELL_WIDTH + UtilityFunctions.CELL_GAP)));
