@@ -1,18 +1,26 @@
 ﻿<Properties StartupItem="BattleShips.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug-Windows|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="src\UtilityFunctions.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\DeploymentController.cs">
     <Files>
-      <File FileName="src\Model\AIMediumPlayer.cs" Line="1" Column="1" />
-      <File FileName="src\Model\AIEasyPlayer.cs" Line="1" Column="1" />
-      <File FileName="src\Model\AIPlayer.cs" Line="1" Column="1" />
-      <File FileName="src\Model\AIHardPlayer.cs" Line="1" Column="1" />
-      <File FileName="src\GameController.cs" Line="1" Column="1" />
-      <File FileName="src\UtilityFunctions.cs" Line="301" Column="43" />
-      <File FileName="src\DeploymentController.cs" Line="1" Column="1" />
-      <File FileName="src\GameResources.cs" Line="43" Column="22" />
-      <File FileName="Resources\animations\splash.txt" Line="8" Column="7" />
-      <File FileName="Resources\animations\startup.txt" Line="1" Column="1" />
+      <File FileName="src\DeploymentController.cs" Line="227" Column="1" />
+      <File FileName="src\GameResources.cs" Line="39" Column="18" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="BattleShips" expanded="True">
+            <Node name="BattleShips" expanded="True">
+              <Node name="Resources" expanded="True">
+                <Node name="images" expanded="True">
+                  <Node name="deploy_mute_button.png" selected="True" />
+                </Node>
+              </Node>
+              <Node name="src" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
