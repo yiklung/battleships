@@ -263,21 +263,41 @@ static class UtilityFunctions
 
 	public static void AddExplosion(int row, int col)
 	{
-		AddAnimation(row, col, "Splash");
+		AddAnimationExplode(row, col, "Explosion");
 	}
 
 	public static void AddSplash(int row, int col)
 	{
-		AddAnimation(row, col, "Splash");
+		AddAnimationsplash(row, col, "Splash");
 	}
 
 	private static List<Sprite> _Animations = new List<Sprite>();
-	private static void AddAnimation(int row, int col, string image)
+	private static void AddAnimationsplash(int row, int col, string image)
 	{
 		Sprite s = default(Sprite);
 		Bitmap imgObj = default(Bitmap);
 
 //		imgObj = GameImage(image);
+		imgObj = GameResources.GameImage(image);
+		imgObj.SetCellDetails(40, 40, 3, 3, 7);
+
+		AnimationScript animation = default(AnimationScript);
+		animation = SwinGame.LoadAnimationScript("splash.txt");
+
+		s = SwinGame.CreateSprite(imgObj, animation);
+		s.X = FIELD_LEFT + col * (CELL_WIDTH + CELL_GAP);
+		s.Y = FIELD_TOP + row * (CELL_HEIGHT + CELL_GAP);
+
+		s.StartAnimation("splash");
+		_Animations.Add(s);
+	}
+
+	private static void AddAnimationExplode(int row, int col, string image)
+	{
+		Sprite s = default(Sprite);
+		Bitmap imgObj = default(Bitmap);
+
+		//		imgObj = GameImage(image);
 		imgObj = GameResources.GameImage(image);
 		imgObj.SetCellDetails(40, 40, 3, 3, 7);
 
