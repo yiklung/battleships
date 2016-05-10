@@ -29,6 +29,9 @@ static class DeploymentController
 	private const int LEFT_RIGHT_BUTTON_LEFT = 350;
 	private const int RANDOM_BUTTON_LEFT = 547;
 
+	private const int MUTE_BUTTON_LEFT = 623;
+	private const int MUTE_BUTTON_WIDTH = 51;
+
 	private const int RANDOM_BUTTON_WIDTH = 51;
 
 	private const int DIR_BUTTONS_WIDTH = 47;
@@ -64,6 +67,13 @@ static class DeploymentController
 			GameController.HumanPlayer.RandomizeDeployment();
 		}
 
+		if (SwinGame.KeyTyped(KeyCode.vk_m)) {
+					//HumanPlayer.RandomizeDeployment();
+			Audio.StopMusic();
+			Audio.CloseAudio();
+		}
+
+
 		if (SwinGame.MouseClicked(MouseButton.LeftButton)) {
 			ShipName selected = default(ShipName);
 			selected = GetShipMouseIsOver();
@@ -87,6 +97,10 @@ static class DeploymentController
 			} else if (UtilityFunctions.IsMouseInRectangle(RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP, RANDOM_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT)) {
 //				HumanPlayer.RandomizeDeployment();				
 				GameController.HumanPlayer.RandomizeDeployment();
+			}else if (UtilityFunctions.IsMouseInRectangle(MUTE_BUTTON_LEFT, TOP_BUTTONS_TOP, MUTE_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT)) {
+				//				HumanPlayer.RandomizeDeployment();				
+				Audio.StopMusic();
+				Audio.CloseAudio();
 			}
 		}
 	}
@@ -185,6 +199,7 @@ static class DeploymentController
 
 //		SwinGame.DrawBitmap(GameImage("RandomButton"), RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP);
 		SwinGame.DrawBitmap(GameResources.GameImage("RandomButton"), RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP);
+		SwinGame.DrawBitmap(GameResources.GameImage("MuteButton"), MUTE_BUTTON_LEFT, TOP_BUTTONS_TOP);
 
 //		DrawMessage();
 		UtilityFunctions.DrawMessage ();
