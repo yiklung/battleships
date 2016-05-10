@@ -79,6 +79,7 @@ public static class GameController
 		switch (_aiSetting) {
 			case AIOption.Medium:
 				_ai = new AIMediumPlayer(_theGame);
+
 				break;
 			case AIOption.Hard:
 				_ai = new AIHardPlayer(_theGame);
@@ -86,6 +87,9 @@ public static class GameController
 			default:
 				_ai = new AIEasyPlayer(_theGame);
 				break;
+
+		//set new bgm
+
 		}
 
 		_human = new Player(_theGame);
