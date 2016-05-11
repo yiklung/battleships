@@ -1,0 +1,13 @@
+SwinGame Animation #v1
+
+//
+// This animation file contains the explosion animation 
+//
+
+// frames 0 to 6, play for 10 frames each
+f:[0-5],[0-5],7,
+
+//Animation identifiers.
+//
+//i:NAME,ID-START
+i:explosion,0
