@@ -59,7 +59,10 @@ public static class GameResources
 	private static void LoadMusic()
 	{
 		NewMusic("Background", "horrordrone.mp3");
+		NewMusic("bgm1", "klaten.mp3");
+		NewMusic("bgm2", "hell.mp3");
 	}
+
 
 	/// <summary>
 	/// Gets a Font Loaded in the Resources
