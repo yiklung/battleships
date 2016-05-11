@@ -23,6 +23,8 @@ public static class GameController
 	private static Stack<GameState> _state = new Stack<GameState>();
 
 	private static AIOption _aiSetting;
+
+
 	/// <summary>
 	/// Returns the current state of the game, indicating which screen is
 	/// currently being used
@@ -32,7 +34,7 @@ public static class GameController
 	public static GameState CurrentState {
 		get { return _state.Peek(); }
 	}
-
+		
 	/// <summary>
 	/// Returns the human player.
 	/// </summary>
@@ -305,6 +307,10 @@ public static class GameController
 //				HandleSetupMenuInput();	
 				MenuController.HandleSetupMenuInput();
 				break;
+			case GameState.BGMSettings:
+//				HandleMenuInput();	
+				MenuController.HandleBgmMenuInput();
+				break;
 			case GameState.Deploying:
 //				HandleDeploymentInput();	
 				DeploymentController.HandleDeploymentInput();
@@ -350,6 +356,10 @@ public static class GameController
 			case GameState.AlteringSettings:
 //				DrawSettings();	
 				MenuController.DrawSettings();
+				break;
+			case GameState.BGMSettings:
+//				BGMSettings();	
+				MenuController.DrawBGM();
 				break;
 			case GameState.Deploying:
 //				DrawDeployment();	
@@ -414,6 +424,9 @@ public static class GameController
 		_aiSetting = setting;
 	}
 
+	public static void SetBGM()
+	{
+	}
 }
 
 //=======================================================
