@@ -31,6 +31,9 @@ static class DeploymentController
 
 	private const int RANDOM_BUTTON_WIDTH = 51;
 
+	private const int MUTE_BUTTON_LEFT = 623;
+	private const int MUTE_BUTTON_WIDTH = 51;
+
 	private const int DIR_BUTTONS_WIDTH = 47;
 
 	private const int TEXT_OFFSET = 5;
@@ -64,6 +67,12 @@ static class DeploymentController
 			GameController.HumanPlayer.RandomizeDeployment();
 		}
 
+		if (SwinGame.KeyTyped(KeyCode.vk_m)) {
+			//			HumanPlayer.RandomizeDeployment();
+			Audio.StopMusic();
+			Audio.CloseAudio();
+		}
+
 		if (SwinGame.MouseClicked(MouseButton.LeftButton)) {
 			ShipName selected = default(ShipName);
 			selected = GetShipMouseIsOver();
@@ -79,7 +88,8 @@ static class DeploymentController
 				GameController.EndDeployment();
 //			} else if (IsMouseInRectangle(UP_DOWN_BUTTON_LEFT, TOP_BUTTONS_TOP, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT)) {
 			} else if (UtilityFunctions.IsMouseInRectangle(UP_DOWN_BUTTON_LEFT, TOP_BUTTONS_TOP, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT)) {
-				_currentDirection = Direction.LeftRight;
+							// fix from leftright to updown
+				_currentDirection = Direction.UpDown;
 //			} else if (IsMouseInRectangle(LEFT_RIGHT_BUTTON_LEFT, TOP_BUTTONS_TOP, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT)) {
 			} else if (UtilityFunctions.IsMouseInRectangle(LEFT_RIGHT_BUTTON_LEFT, TOP_BUTTONS_TOP, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT)) {
 				_currentDirection = Direction.LeftRight;
@@ -87,7 +97,12 @@ static class DeploymentController
 			} else if (UtilityFunctions.IsMouseInRectangle(RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP, RANDOM_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT)) {
 //				HumanPlayer.RandomizeDeployment();				
 				GameController.HumanPlayer.RandomizeDeployment();
+			} else if (UtilityFunctions.IsMouseInRectangle(MUTE_BUTTON_LEFT, TOP_BUTTONS_TOP, MUTE_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT)) {
+					//			HumanPlayer.RandomizeDeployment();
+					Audio.StopMusic();
+					Audio.CloseAudio();
 			}
+
 		}
 	}
 
@@ -195,6 +210,7 @@ static class DeploymentController
 	/// </summary>
 	/// <returns>The ship selected or none</returns>
 	private static ShipName GetShipMouseIsOver()
+
 	{
 		foreach (ShipName sn in Enum.GetValues(typeof(ShipName))) {
 			int i = 0;
@@ -209,6 +225,7 @@ static class DeploymentController
 
 		return ShipName.None;
 	}
+
 }
 
 //=======================================================
