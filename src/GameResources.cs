@@ -31,7 +31,10 @@ public static class GameResources
 		NewImage("SelectedShip", "deploy_button_hl.png");
 		NewImage("PlayButton", "deploy_play_button.png");
 		NewImage("RandomButton", "deploy_randomize_button.png");
-		NewImage("MuteButton", "deploy_mute_button.png");
+		NewImage("MuteSoundButton", "mute_sound_button.png");
+		NewImage("SoundButton", "sound_button.png");
+		NewImage("MuteBGMButton", "mute_bgm_button.png");
+		NewImage("BGMButton", "bgm_button.png");
 
 		//Ships
 		int i = 0;
@@ -47,6 +50,18 @@ public static class GameResources
 	}
 
 	private static void LoadSounds()
+	{
+		NewSound("Error", "error.wav");
+		NewSound("Hit", "hit.wav");
+		NewSound("Sink", "sink.wav");
+		NewSound("Siren", "siren.wav");
+		NewSound("Miss", "watershot.wav");
+		NewSound("Winner", "winner.wav");
+		NewSound("Lose", "lose.wav");
+		NewSound ("boop", "boop.wav");
+	}
+
+	public static void LoadSounds1()
 	{
 		NewSound("Error", "error.wav");
 		NewSound("Hit", "hit.wav");

@@ -104,6 +104,9 @@
     <WinLibraryFiles Include="lib\win\zlib1.dll" />
     <None Include="packages.config" />
     <None Include="Resources\animations\explosion.txt" />
+    <None Include="Resources\sounds\boop.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Target Name="CopyFiles">
     <Copy SourceFiles="@(MacLibraryFiles)" DestinationFolder="$(OutDir)" />
