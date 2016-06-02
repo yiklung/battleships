@@ -186,6 +186,7 @@ public class SeaGrid : ISeaGrid
 			if (_GameTiles[row, col].Ship.IsDestroyed) {
 				_GameTiles[row, col].Shot = true;
 				_ShipsKilled += 1;
+				//display
 				return new AttackResult(ResultOfAttack.Destroyed, _GameTiles[row, col].Ship, "destroyed the enemy's", row, col);
 			}
 

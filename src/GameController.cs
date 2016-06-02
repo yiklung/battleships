@@ -23,6 +23,8 @@ public static class GameController
 	private static Stack<GameState> _state = new Stack<GameState>();
 
 	private static AIOption _aiSetting;
+
+	private static MuteStatus _stat = MuteStatus.unmute;
 	/// <summary>
 	/// Returns the current state of the game, indicating which screen is
 	/// currently being used
@@ -32,7 +34,7 @@ public static class GameController
 	public static GameState CurrentState {
 		get { return _state.Peek(); }
 	}
-
+		
 	/// <summary>
 	/// Returns the human player.
 	/// </summary>
@@ -79,6 +81,7 @@ public static class GameController
 		switch (_aiSetting) {
 			case AIOption.Medium:
 				_ai = new AIMediumPlayer(_theGame);
+
 				break;
 			case AIOption.Hard:
 				_ai = new AIHardPlayer(_theGame);
@@ -86,6 +89,9 @@ public static class GameController
 			default:
 				_ai = new AIEasyPlayer(_theGame);
 				break;
+
+		//set new bgm
+
 		}
 
 		_human = new Player(_theGame);
@@ -128,7 +134,15 @@ public static class GameController
 		}
 
 //		Audio.PlaySoundEffect(GameSound("Hit"));
-		Audio.PlaySoundEffect(GameResources.GameSound("Hit"));
+		//Audio.PlaySoundEffect(GameResources.GameSound("Hit"));
+		if (_stat != DeploymentController._currentSEStatus)
+		{
+			Audio.StopSoundEffect (GameResources.GameSound ("Hit"));
+		}
+		else
+		{
+			Audio.PlaySoundEffect(GameResources.GameSound("Hit"));
+		}
 
 //		DrawAnimationSequence();
 		UtilityFunctions.DrawAnimationSequence();
@@ -142,7 +156,16 @@ public static class GameController
 		}
 
 //		Audio.PlaySoundEffect(GameSound("Miss"));
-		Audio.PlaySoundEffect(GameResources.GameSound("Miss"));
+		//Audio.PlaySoundEffect(GameResources.GameSound("Miss"));
+		if (_stat != DeploymentController._currentSEStatus)
+		{
+			Audio.StopSoundEffect (GameResources.GameSound ("Miss"));
+		}
+		else
+		{
+			Audio.PlaySoundEffect(GameResources.GameSound("Miss"));
+		}
+
 
 //		DrawAnimationSequence();
 		UtilityFunctions.DrawAnimationSequence();
@@ -173,13 +196,29 @@ public static class GameController
 			case ResultOfAttack.Destroyed:
 				PlayHitSequence(result.Row, result.Column, isHuman);
 //				Audio.PlaySoundEffect(GameSound("Sink"));
+				//Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
+			if (_stat != DeploymentController._currentSEStatus)
+			{
+				Audio.StopSoundEffect (GameResources.GameSound ("Sink"));
+			}
+			else
+			{
 				Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
+			}
 
 				break;
 			case ResultOfAttack.GameOver:
 				PlayHitSequence(result.Row, result.Column, isHuman);
 //				Audio.PlaySoundEffect(GameSound("Sink"));
+				//Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
+			if (_stat != DeploymentController._currentSEStatus)
+			{
+				Audio.StopSoundEffect (GameResources.GameSound ("Sink"));
+			}
+			else
+			{
 				Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
+			}
 
 //				while (Audio.SoundEffectPlaying(GameSound("Sink"))) {
 				while (Audio.SoundEffectPlaying(GameResources.GameSound("Sink"))) {
@@ -189,10 +228,26 @@ public static class GameController
 
 				if (HumanPlayer.IsDestroyed) {
 //					Audio.PlaySoundEffect(GameSound("Lose"));
-					Audio.PlaySoundEffect(GameResources.GameSound("Lose"));
+					//Audio.PlaySoundEffect(GameResources.GameSound("Lose"));
+						if (_stat != DeploymentController._currentSEStatus)
+						{
+							Audio.StopSoundEffect (GameResources.GameSound ("Lose"));
+						}
+						else
+						{
+							Audio.PlaySoundEffect(GameResources.GameSound("Lose"));
+						}
 				} else {
 //					Audio.PlaySoundEffect(GameSound("Winner"));
-					Audio.PlaySoundEffect(GameResources.GameSound("Winner"));
+					//Audio.PlaySoundEffect(GameResources.GameSound("Winner"));
+						if (_stat != DeploymentController._currentSEStatus)
+						{
+							Audio.StopSoundEffect (GameResources.GameSound ("Winner"));
+						}
+						else
+						{
+							Audio.PlaySoundEffect(GameResources.GameSound("Winner"));
+						}
 				}
 
 				break;
@@ -204,7 +259,15 @@ public static class GameController
 				break;
 			case ResultOfAttack.ShotAlready:
 //				Audio.PlaySoundEffect(GameSound("Error"));
-				Audio.PlaySoundEffect(GameResources.GameSound("Error"));
+				//Audio.PlaySoundEffect(GameResources.GameSound("Error"));
+					if (_stat != DeploymentController._currentSEStatus)
+					{
+						Audio.StopSoundEffect (GameResources.GameSound ("Error"));
+					}
+					else
+					{
+						Audio.PlaySoundEffect(GameResources.GameSound("Error"));
+					}
 				break;
 		}
 	}
@@ -301,6 +364,10 @@ public static class GameController
 //				HandleSetupMenuInput();	
 				MenuController.HandleSetupMenuInput();
 				break;
+			case GameState.BGMSettings:
+//				HandleMenuInput();	
+				MenuController.HandleBgmMenuInput();
+				break;
 			case GameState.Deploying:
 //				HandleDeploymentInput();	
 				DeploymentController.HandleDeploymentInput();
@@ -346,6 +413,10 @@ public static class GameController
 			case GameState.AlteringSettings:
 //				DrawSettings();	
 				MenuController.DrawSettings();
+				break;
+			case GameState.BGMSettings:
+//				BGMSettings();	
+				MenuController.DrawBGM();
 				break;
 			case GameState.Deploying:
 //				DrawDeployment();	
@@ -410,6 +481,9 @@ public static class GameController
 		_aiSetting = setting;
 	}
 
+	public static void SetBGM()
+	{
+	}
 }
 
 //=======================================================
